@@ -72,11 +72,8 @@ class Bot(object):
 		# authed_teams[team_id] = {"bot_token":
 		#                          auth_response["bot"]["bot_access_token"]}
 		bot_token = auth_response["bot"]["bot_access_token"]
-		# Then we'll reconnect to the Slack Client with the correct team's
-		# bot token
-		#self.client = SlackClient(authed_teams[team_id]["bot_token"])
+	
 		self.client = SlackClient(bot_token)
-		#user_id = self.client.api_call("auth.test")["user_id"]
 		self.message("What is your timezone, please?",attachments_json)
 	   
 

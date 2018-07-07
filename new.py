@@ -1,5 +1,4 @@
 from flask import Flask, request, make_response, Response, render_template
-from bot import app
 import os
 import json
 import pytz
@@ -16,7 +15,7 @@ starterbot_id = None # starterbot's user ID in Slack: value is assigned after th
 pyBot = auth.Bot()
 slack_client = pyBot.client
 
-#app = Flask(__name__)
+app = Flask(__name__)
 
 #The endpoint Slack will load your menu options from
 @app.route("/options", methods=["POST"])
@@ -73,6 +72,6 @@ def message_actions():
 
 
 
-# # Start the Flask server
-# if __name__ == "__main__":
-#     app.run(debug=False)
+# Start the Flask server
+if __name__ == "__main__":
+    app.run(debug=False)
