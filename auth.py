@@ -5,9 +5,9 @@ from slackclient import SlackClient
 import pytz
 import datetime
 
-CLIENT_ID = os.environ.get(CLIENT_ID) 
-CLIENT_SECRET = os.environ.get(CLIENT_SECRET) 
-VERIFICATION_TOKEN = os.environ.get(VERIFICATION_TOKEN) 
+CLIENT_ID = os.environ.get('CLIENT_ID') 
+CLIENT_SECRET = os.environ.get('CLIENT_SECRET') 
+VERIFICATION_TOKEN = os.environ.get('VERIFICATION_TOKEN') 
 
 #authed_teams = {}
 
