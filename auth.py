@@ -26,7 +26,7 @@ attachments_json = [
         "fallback": "What is your timezone?",
         "color": "#3AA3E3",
         "attachment_type": "default",
-        "callback_id": "timezone options",
+        "callback_id": "timezone_options",
         "actions": [
             {
                 "name": "timezone_list",

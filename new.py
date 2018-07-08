@@ -9,6 +9,10 @@ import auth
 import gevent #workers-timeout
 from slackclient import SlackClient
 
+from apscheduler.schedulers.background import BackgroundScheduler
+
+
+
 #SLACK_WEBHOOK_SECRET ="9OXQcUS9PqzdAvyh7E6KWqP6"
 DELAY = 1 #86400 #24 hours
 starterbot_id = None # starterbot's user ID in Slack: value is assigned after the bot starts up
@@ -59,27 +63,36 @@ def message_actions():
     form_json = json.loads(request.form["payload"])
     selection = form_json["actions"][0]["selected_options"][0]["value"]
 
-    intz = pytz.timezone(selection)
-    nowdt = datetime.datetime.now(intz)
-    nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=12, minute=4,second=59,tzinfo=intz).strftime('%H:%M:%S')
-    #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
-    print(nowt)
-    print(midday)
-    while True:  
-        print("out") 
-        if(nowt==midday):
-            print("in-not")
-            while True:
-                print("in")
-                pyBot.message("hi", [])
-                #time.sleep(30)
-                gevent.sleep(30)
-                print(nowt)
-        time.sleep(DELAY)
-        gevent.sleep(0)
+    # intz = pytz.timezone(selection)
+    # nowdt = datetime.datetime.now(intz)
+    # nowt = nowdt.strftime('%H:%M:%S')
+    # midday=datetime.time(hour=12, minute=4,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    # #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    # print(nowt)
+    # print(midday)
+
+    scheduler = BackgroundScheduler(timezone=selection)
+    scheduler.add_job(send_hi, 'cron', hour=22)
+    scheduler.start()
+    # while True:  
+    #     print("out") 
+    #     if(nowt==midday):
+    #         print("in-not")
+    #         while True:
+    #             print("in")
+    #             pyBot.message("hi", [])
+    #             #time.sleep(30)
+    #             gevent.sleep(30)
+    #             print(nowt)
+    #     time.sleep(DELAY)
+    #     gevent.sleep(0)
 
     return make_response(""),200
+
+
+def send_hi():
+    """send a hi"""
+    pyBot.message("hi", [])
 
 
 
