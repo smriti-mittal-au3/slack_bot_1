@@ -6,6 +6,7 @@ import datetime
 import time
 import re
 import auth
+import gevent #workers-timeout
 from slackclient import SlackClient
 
 #SLACK_WEBHOOK_SECRET ="9OXQcUS9PqzdAvyh7E6KWqP6"
@@ -61,7 +62,7 @@ def message_actions():
     intz = pytz.timezone(selection)
     nowdt = datetime.datetime.now(intz)
     nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=11, minute=25,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    midday=datetime.time(hour=11, minute=45,second=59,tzinfo=intz).strftime('%H:%M:%S')
     #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
     print(nowt)
     print(midday)
@@ -72,9 +73,11 @@ def message_actions():
             while True:
                 print("in")
                 pyBot.message("hi", [])
-                time.sleep(30)
+                #time.sleep(30)
+                gevent.sleep(30)
                 print(nowt)
-        time.sleep(DELAY)
+        #time.sleep(DELAY)
+        gevent.sleep(DELAY)
 
     return make_response(""),200
 
