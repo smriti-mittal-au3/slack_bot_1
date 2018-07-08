@@ -62,7 +62,7 @@ def message_actions():
     intz = pytz.timezone(selection)
     nowdt = datetime.datetime.now(intz)
     nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=11, minute=40,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    midday=datetime.time(hour=13, minute=40,second=59,tzinfo=intz).strftime('%H:%M:%S')
     #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
     print(nowt)
     print(midday)
@@ -76,7 +76,7 @@ def message_actions():
                 #time.sleep(30)
                 gevent.sleep(30)
                 print(nowt)
-        #time.sleep(DELAY)
+        time.sleep(DELAY)
         gevent.sleep(0)
 
     return make_response(""),200
