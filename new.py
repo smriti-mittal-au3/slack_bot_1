@@ -44,7 +44,7 @@ def thanks():
     code_arg = request.args.get('code')
     # The bot's auth method to handles exchanging the code for an OAuth token
     
-    print(code_arg)
+    #print(code_arg)
     pyBot.auth(code_arg)                  
     return make_response("Thank you! You have successfully installed the bot"), 200
 
@@ -53,15 +53,16 @@ def thanks():
 @app.route("/slack", methods=["POST"])
 def message_actions():
     """send "hi" at 12pm of the selected timezone"""
-    print(request)
-    print(request.form)
+    #print(request)
+    #print(request.form)
     form_json = json.loads(request.form["payload"])
     selection = form_json["actions"][0]["selected_options"][0]["value"]
 
     intz = pytz.timezone(selection)
     nowdt = datetime.datetime.now(intz)
     nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    midday=datetime.time(hour=10, minute=30,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
     
     while True:   
         if(nowt==midday):
