@@ -14,8 +14,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 
 #SLACK_WEBHOOK_SECRET ="9OXQcUS9PqzdAvyh7E6KWqP6"
-DELAY = 1 #86400 #24 hours
-starterbot_id = None # starterbot's user ID in Slack: value is assigned after the bot starts up
 
 pyBot = auth.Bot()
 slack_client = pyBot.client
@@ -72,7 +70,7 @@ def message_actions():
     # print(midday)
 
     scheduler = BackgroundScheduler(timezone=selection)
-    scheduler.add_job(send_hi, 'cron', hour=22)
+    scheduler.add_job(send_hi, 'cron', hour=12)
     scheduler.start()
     # while True:  
     #     print("out") 
