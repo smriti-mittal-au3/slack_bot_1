@@ -62,7 +62,7 @@ def message_actions():
     intz = pytz.timezone(selection)
     nowdt = datetime.datetime.now(intz)
     nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=13, minute=40,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    midday=datetime.time(hour=12, minute=4,second=59,tzinfo=intz).strftime('%H:%M:%S')
     #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
     print(nowt)
     print(midday)
