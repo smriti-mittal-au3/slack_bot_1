@@ -61,17 +61,19 @@ def message_actions():
     intz = pytz.timezone(selection)
     nowdt = datetime.datetime.now(intz)
     nowt = nowdt.strftime('%H:%M:%S')
-    midday=datetime.time(hour=11, minute=21,second=59,tzinfo=intz).strftime('%H:%M:%S')
+    midday=datetime.time(hour=11, minute=25,second=59,tzinfo=intz).strftime('%H:%M:%S')
     #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
     print(nowt)
     print(midday)
-    while True:   
+    while True:  
+        print("out") 
         if(nowt==midday):
             print("in-not")
             while True:
                 print("in")
                 pyBot.message("hi", [])
                 time.sleep(30)
+                print(nowt)
         time.sleep(DELAY)
 
     return make_response(""),200
