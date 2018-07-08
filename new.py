@@ -63,7 +63,8 @@ def message_actions():
     nowt = nowdt.strftime('%H:%M:%S')
     midday=datetime.time(hour=13, minute=31,second=59,tzinfo=intz).strftime('%H:%M:%S')
     #midday=datetime.time(hour=11, minute=59,second=59,tzinfo=intz).strftime('%H:%M:%S')
-    
+    print(nowt)
+    print(midday)
     while True:   
         if(nowt==midday):
             while True:
@@ -77,4 +78,5 @@ def message_actions():
 
 # Start the Flask server
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0', port=5000)
+    app.run(debug=True)
+    #app.run(host = '0.0.0.0', port=5000)
